@@ -1,0 +1,97 @@
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Login </title>
+  <link href="https://fonts.googleapis.com/css?family=Karla:400,700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/login.css">
+  <link rel="shortcut icon" href="./assets/img/logo.png" type="image/x-icon">
+</head>
+
+<body>
+  <main>
+    <section class="vh-100" style="background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(73,38,187,1) 35%, rgba(139,38,187,1) 100%);">
+      <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col col-xl-10">
+            <div class="card" style="border-radius: 1rem;padding-left: 14px;">
+              <div class="row g-0">
+                <div class="col-md-6 col-lg-5 d-none d-md-block leftSide">
+                  <img src="./assets/img/logo.png" alt="login form" class="img-fluid" >
+                  <div class="cen"><h4>Bem Vindo de Volta<h4></div>
+                </div>
+                <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                  <div class="card-body p-4 p-lg-5 text-black">
+    
+                    <form onsubmit="return false;">
+
+    
+                      <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Acesse sua conta</h5>
+    
+                      <div class="form-outline mb-4">
+                        <input type="email" id="email" class="form-control form-control-lg">
+                        <label class="form-label" for="form2Example17">E-mail</label>
+                      </div>
+    
+                      <div class="form-outline mb-4">
+                        <input type="password" id="senha" class="form-control form-control-lg">
+                        <label class="form-label" for="form2Example27">Senha</label>
+                      </div>
+    
+                      <div class="pt-1 mb-4">
+                        <button class="btn btn-dark btn-lg btn-block" type="button" onclick="entrar();">Entrar</button>
+                      </div>
+    
+                      <a class="small text-muted" href="#!">Esqueceu sua senha?</a> <br><br>
+                      <p class="mb-5 pb-lg-2" style="color: #393f81;">Não é cadastrado? <a href="sing-up.html" style="color: #3eb4d8;">Cadastre-se</a></p>
+                      <a href="index.html" class="small text-muted">Voltar</a>
+                    </form>
+    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+  <script>
+
+    function entrar() {
+      var emailPessoa = email.value;
+      var senhaPessoa = senha.value;
+
+      fetch(`/usuarios/autenticar`, {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          emailServer: emailPessoa,
+          senhaServer: senhaPessoa
+        })
+      }).then(function (response) {
+        console.log('Resposta: ', response);
+        if (response.ok) {
+          response.json().then(json => {
+            console.log(json);
+            sessionStorage.USUARIO = JSON.stringify(json);
+
+          });
+          window.location.href = "../dashboard/index.html";
+        }
+      });
+    }
+
+
+  </script>
+
+
+</body></html>
