@@ -52,5 +52,5 @@ jobs:
         with:
           app-name: 'RabbitMonitoringSystem'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_3608199528A74262B5655725CBE23128 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_4871E4B265D24B05843AA1F658A82079 }}
           package: .
