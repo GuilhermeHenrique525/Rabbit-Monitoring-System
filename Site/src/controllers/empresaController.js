@@ -28,8 +28,8 @@ function cadastrar(req, res) {
         empresaModel.cadastrar(nomeEmpresa,cnpjEmpresa,telefone).then(
                 function (resultado) {
                     res.json(resultado);
-                    /*var id = resultado.insertId;*/
-                    usuarioModel.cadastrar(nome,email,sha512(senha),'Gestor',1,'NULL');
+                    var id = resultado.insertId;
+                    usuarioModel.cadastrar(nome,email,sha512(senha),'Gestor',id,'NULL');
                 }
             ).catch(
                 function (erro) {
