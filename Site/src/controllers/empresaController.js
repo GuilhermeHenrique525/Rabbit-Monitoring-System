@@ -28,7 +28,7 @@ function cadastrar(req, res) {
         empresaModel.cadastrar(nomeEmpresa,cnpjEmpresa,telefone).then(
                 function (resultado) {
                     res.json(resultado);
-                    var id = resultado.insertId;
+                    var id = resultado.insertId;// fazer uma nova querry para pegar o ultimo id da empresa
                     usuarioModel.cadastrar(nome,email,sha512(senha),'Gestor',id,'NULL');
                 }
             ).catch(
