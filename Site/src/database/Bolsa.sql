@@ -228,7 +228,6 @@ INNER JOIN metrica ON idMetrica = fkMetrica;
 
 -- criar um usuario no site antes de fazer os inserts abaixo
 -- inserts
-INSERT INTO usuario (nomeUsuario, emailUsuario, senhaUsuario, tipoUsuario, fkEmpresa, fkGestor) VALUES ('Guilherme', 'email@gmail.com', '1234', 'Gestor', 1, 1)
 INSERT INTO setor (fkEmpresa, nomeSetor, descricaoSetor) VALUES (1,'SETOR1','Destinado Aos Computadores da Região de São Paulo');
 INSERT INTO metrica (nomeMetrica, comandoPython, unidadeMedida, tratamentoPython, isTupla) VALUES('CPUPercent','psutil.cpu_percent(interval=None, percpu=False)','%',NULL,'0');
 INSERT INTO metrica (nomeMetrica, comandoPython, unidadeMedida, tratamentoPython, isTupla) VALUES('RAMPercent','psutil.virtual_memory().percent','%', NULL,'0');
